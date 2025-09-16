@@ -122,6 +122,33 @@
             transform: translateY(-2px);
             box-shadow: 0 0 12px rgba(223, 23, 131, 0.4);
         }
+
+        /* 3D Button - NEW */
+        .btn-3d {
+            position: relative;
+            padding: 10px 22px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 4px #b31267; /* Darker shade of --primary for 3D effect */
+            transition: all 0.1s ease-in-out;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-3d:hover {
+            top: 2px; /* Moves down on hover */
+            box-shadow: 0 2px #b31267; /* Reduces shadow to simulate press */
+        }
+
+        .btn-3d:active {
+            top: 4px; /* Moves further down on click */
+            box-shadow: 0 0 #b31267; /* Flattens shadow on click */
+        }
         
         /* Toolbox Container - UPDATED */
         #toolbox-container {
@@ -299,7 +326,11 @@
             <span id="appBrandNameDisplay">4evertools</span>
         </div>
         <div class="top-menu-actions">
+            <div class="fab" id="homeBtn" title="Home" onclick="window.open('https://helpcenter.easylistings.website', '_blank')"><i class="fa fa-home"></i></div>
+            <div class="fab" id="translateBtn" title="Translate" onclick="window.open('https://helpcenter.easylistings.website', '_blank')"><i class="fa fa-world"></i></div>
+
             <div class="fab" id="supportBtn" title="Support" onclick="window.open('https://helpcenter.easylistings.website', '_blank')"><i class="fa fa-info-circle"></i></div>
+            <a href="#" class="btn-3d">Contact Support</a>
         </div>
     </div>
 </div>
