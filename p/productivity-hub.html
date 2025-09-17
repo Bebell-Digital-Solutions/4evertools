@@ -28,7 +28,8 @@
 
 
 
-<style>
+
+    <style>
         :root {
             --primary: #df1783;
             --secondary: #8c318f;
@@ -96,6 +97,7 @@
             width: 90%;
             background-color: rgba(45, 55, 72, 0.5); /* Semi-transparent dark card color */
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
             border-radius: 0.75rem;
             padding: 0.75rem 1.5rem;
@@ -103,11 +105,6 @@
         body.light .top-menu-bar {
              background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent light card color */
         }
-
-
-
-
-
 
         .top-menu-content {
             display: flex;
@@ -158,67 +155,46 @@
             box-shadow: 0 4px 15px rgba(223, 23, 131, 0.4);
         }
 
-
-
-.browser-container {
-    max-width: 4xl;
-    margin: 3rem auto 0;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    border-radius: 0.75rem 0.75rem 0 0; /* Only top corners rounded */
-    overflow: hidden;
-}
-
-.browser-chrome {
-    background: #2d3748;
-    padding: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.browser-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
-.browser-dot.red { background: #f56565; }
-.browser-dot.yellow { background: #ecc94b; }
-.browser-dot.green { background: #48bb78; }
-
-.browser-url {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    padding: 0.25rem 0.75rem;
-    color: #a0aec0;
-    font-size: 0.875rem;
-    text-align: center;
-}
-
-.browser-content {
-    height: 600px;
-    background: white;
-    border: 0;
-    display: block;
-    width: 100%;
-}
-
-/* Responsive heights */
-@media (max-width: 768px) {
-    .browser-content {
-        height: 400px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .browser-content {
-        height: 700px;
-    }
-}
-
-
-
+        .browser-container {
+            max-width: 3xl;
+            margin: 3rem auto 0;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 0.75rem 0.75rem 0 0; /* Only top corners rounded */
+            overflow: hidden;
+        }
+        .browser-chrome {
+            background: #2d3748;
+            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .browser-dot.red { background: #f56565; }
+        .browser-dot.yellow { background: #ecc94b; }
+        .browser-dot.green { background: #48bb78; }
+        .browser-url {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 0.25rem 0.75rem;
+            color: #a0aec0;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+        .browser-content {
+            height: 600px;
+            background: white;
+            border: 0;
+            display: block;
+            width: 100%;
+        }
+        @media (max-width: 768px) { .browser-content { height: 400px; } }
+        @media (min-width: 1024px) { .browser-content { height: 700px; } }
 
         .slider-container {
             -ms-overflow-style: none; scrollbar-width: none;
@@ -228,21 +204,15 @@
         @media (min-width: 640px) { .tool-card { flex: 0 0 45%; } }
         @media (min-width: 1024px) { .tool-card { flex: 0 0 30%; } }
 
-
-       .step-icon-bg {
+        .step-icon-bg {
             background: white;
             transition: all 0.3s ease;
             color: #df1783;
         }
-
-
-
-.step-icon {
+        .step-icon {
             transition: all 0.3s ease;
             color: #df1783;
         }
-
-        
         .step-card:hover .step-icon-bg {
             transform: scale(1.05);
             box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.3);
@@ -293,22 +263,9 @@
             transform: translateY(-5px);
             box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.25);
         }
-        
-        .gradient-bg {
-            background: linear-gradient(145deg, var(--secondary), var(--primary));
-            transition: all 0.3s ease;
-        }
-        
-        .gradient-bg:hover {
- transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(223, 23, 131, 0.4)
-        }
 
 
-
-
-        
-        .banner-container {
+ .banner-container {
             max-width: 480px;
             margin: 0 auto 20px;
             border-radius: 12px;
@@ -330,8 +287,20 @@
             transform: translateX(5px);
         }
         
- 
+
+
         
+        .gradient-bg {
+            background: linear-gradient(145deg, var(--secondary), var(--primary));
+            transition: all 0.3s ease;
+        }
+        
+        .gradient-bg:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(223, 23, 131, 0.4)
+        }
+        
+       
         .guarantee-badge {
             display: inline-flex;
             align-items: center;
@@ -344,16 +313,16 @@
             margin-top: 15px;
         }
 
+        .mission-image {
+            max-width: 880px;
+            width: 100%;
+            height: auto;
+            border-radius: 0.75rem;
+ 
+        }
 
 
-.mission-image {
-    width: 480px;
-    height: auto;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-
-       .video-container {
+              .video-container {
             position: relative;
             width: 100%;
             padding-top: 56.25%; /* 16:9 Aspect Ratio */
@@ -422,45 +391,14 @@
             }
         }
 
-
-
-
-    
-
-@media (max-width: 768px) {
-    .mission-image {
-        max-width: 300px;
-    }
-}
-
-@media (max-width: 640px) {
-    .mission-image {
-        max-width: 250px;
-    }
-}
-
-
-/* Add this to your existing CSS */
-.w-full.mb-10 img {
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    object-fit: cover;
-}
-
-@media (max-width: 768px) {
-    .w-full.mb-10 img {
-        max-height: 500px;
-    }
-}
-
-@media (max-width: 640px) {
-    .w-full.mb-10 img {
-        max-height: 550px;
-    }
-}
-
-
+        .w-full.mb-10 img {
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) { .w-full.mb-10 img { max-height: 500px; } }
+        @media (max-width: 640px) { .w-full.mb-10 img { max-height: 550px; } }
     </style>
 </head>
 <body class="dark"> <!-- Default to dark theme -->
