@@ -352,6 +352,81 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+
+       .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: #1F2937;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(223, 23, 131, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 0 rgba(223, 23, 131, 0.7);
+            animation: pulse 2s infinite;
+        }
+        
+        .play-button:hover {
+            background: rgba(196, 18, 117, 0.95);
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+        
+        .play-button i {
+            color: white;
+            font-size: 32px;
+            margin-left: 4px;
+        }
+        
+        .video-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(223, 23, 131, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(223, 23, 131, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(223, 23, 131, 0);
+            }
+        }
+
+
+
+
+    
+
 @media (max-width: 768px) {
     .mission-image {
         max-width: 300px;
@@ -1092,6 +1167,41 @@ faq5a: "Nuestro próximo gran proyecto es 'Finance Manager Pro', una herramienta
 
         // Simple script for slider dragging is unchanged...
     </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const playButton = document.getElementById('playButton');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoThumbnail = document.querySelector('.video-thumbnail');
+            
+            playButton.addEventListener('click', function() {
+                // Hide the thumbnail and play button
+                videoThumbnail.style.opacity = '0';
+                playButton.style.display = 'none';
+                
+                // Show and play the video
+                videoPlayer.style.display = 'block';
+                videoPlayer.play();
+                
+                // Add a slight delay before removing elements completely
+                setTimeout(() => {
+                    videoThumbnail.style.display = 'none';
+                }, 300);
+            });
+            
+            // When video ends, show the thumbnail and play button again
+            videoPlayer.addEventListener('ended', function() {
+                videoThumbnail.style.display = 'block';
+                videoThumbnail.style.opacity = '1';
+                playButton.style.display = 'flex';
+                videoPlayer.style.display = 'none';
+            });
+        });
+    </script>
+
+
+    
 </body>
 </html>
 
