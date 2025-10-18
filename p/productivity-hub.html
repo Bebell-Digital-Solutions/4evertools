@@ -184,10 +184,30 @@
         @media (max-width: 768px) { .browser-content { height: 400px; } }
         @media (min-width: 1024px) { .browser-content { height: 700px; } }
 
+        /* --- NEW: Custom Scrollbar for Slider --- */
         .slider-container {
-            -ms-overflow-style: none; scrollbar-width: none;
+            -ms-overflow-style: auto; /* Show scrollbar on IE/Edge */
+            scrollbar-width: thin; /* Show scrollbar on Firefox */
+            scrollbar-color: var(--primary) var(--card-color); /* thumb and track color */
         }
-        .slider-container::-webkit-scrollbar { display: none; }
+        .slider-container::-webkit-scrollbar {
+            height: 8px; /* Height of horizontal scrollbar */
+        }
+        .slider-container::-webkit-scrollbar-track {
+            background: var(--card-color);
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+        .slider-container::-webkit-scrollbar-thumb {
+            background-color: var(--primary);
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .slider-container::-webkit-scrollbar-thumb:hover {
+            background-color: var(--secondary);
+        }
+        /* --- End of Custom Scrollbar --- */
+        
         .tool-card { flex: 0 0 80%; }
         @media (min-width: 640px) { .tool-card { flex: 0 0 45%; } }
         @media (min-width: 1024px) { .tool-card { flex: 0 0 30%; } }
@@ -752,17 +772,17 @@
                         <a href="https://4evertools.gumroad.com/l/finance-manager-pro" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
                            <img src="https://bucket.mlcdn.com/a/3336/3336910/images/37ba4c0774b61082d0a7be609bd9db87a775c94b.jpeg" alt="Finance Manager Pro Thumbnail" class="w-full h-48 object-cover">
                            <div class="p-6">
-                               <div class="flex justify-between items-start">
-                                   <div>
-                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool1Title">Finance Manager Pro</h4>
-                                       <p class="text-subtle mt-1" data-lang-key="tool1Desc">Simple, powerful budgeting.</p>
-                                   </div>
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="text-xl font-bold text-main" data-lang-key="tool1Title">Finance Manager Pro</h4>
+                                        <p class="text-subtle mt-1" data-lang-key="tool1Desc">Simple, powerful budgeting.</p>
+                                    </div>
                                     <span class="text-xs bg-green-500/80 text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="comingSoon">Published</span>
-                               </div>
-                               <div class="flex gap-2 mt-4">
+                                </div>
+                                <div class="flex gap-2 mt-4">
                                    <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">Finance</span>
                                    <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">LTD</span>
-                               </div>
+                                </div>
                            </div>
                         </a>
 
@@ -846,10 +866,10 @@
     </footer>
 
 
-
-    
-
-
+    <!-- NEW: Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top" class="fixed bottom-5 right-5 z-50 hidden items-center justify-center h-12 w-12 rounded-full bg-primary text-white shadow-lg transition-all duration-300 hover:bg-secondary hover:scale-110">
+        <i class="fas fa-arrow-up"></i>
+    </button>
     
   <script>
         // Initialize Lucide icons
@@ -946,6 +966,23 @@
             translationToggle.addEventListener('click', () => {
                 currentLang = currentLang === 'en' ? 'es' : 'en';
                 translatePage(currentLang);
+            });
+
+            // --- NEW: BACK TO TOP BUTTON ---
+            const backToTopBtn = document.getElementById('backToTopBtn');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.remove('hidden');
+                    backToTopBtn.classList.add('flex');
+                } else {
+                    backToTopBtn.classList.add('hidden');
+                    backToTopBtn.classList.remove('flex');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({top: 0, behavior: 'smooth'});
             });
 
         });
